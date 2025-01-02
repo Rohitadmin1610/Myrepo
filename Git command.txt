@@ -1,0 +1,390 @@
+git config --global user.name "Rohit Gupta"
+git config --global user.email Gupta.rohit@email.com
+
+git config --list
+
+
+
+PS C:\Users\ROHIT\Documents\GitTraning> git log                                                       
+commit 5413a39ed9802953f82d2e5f08b32bda6e0edb7d (HEAD -> master)
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:25:41 2025 +0530
+
+    Third commit index.html
+
+commit 8724aeb50d463cff3514042b7db1d42db82cf26c
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:23:42 2025 +0530
+
+    Second commit index.html
+
+commit 66baf87d66e18ae3984636d78545a655033bd376
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:16:19 2025 +0530
+
+    First commit index.html
+PS C:\Users\ROHIT\Documents\GitTraning> git checkout 66baf87d66e18ae3984636d78545a655033bd376:Index.html --*
+error: unknown option `*'
+usage: git checkout [<options>] <branch>
+   or: git checkout [<options>] [<branch>] -- <file>...
+
+    -b <branch>           create and checkout a new branch
+    -B <branch>           create/reset and checkout a branch
+    -l                    create reflog for new branch
+    --[no-]guess          second guess 'git checkout <no-such-branch>' (default)
+    --[no-]overlay        use overlay mode (default)
+    -q, --[no-]quiet      suppress progress reporting
+    --[no-]recurse-submodules[=<checkout>]
+                          control recursive updating of submodules
+    --[no-]progress       force progress reporting
+    -m, --[no-]merge      perform a 3-way merge with the new branch
+    --[no-]conflict <style>
+                          conflict style (merge, diff3, or zdiff3)
+    -d, --[no-]detach     detach HEAD at named commit
+    -t, --[no-]track[=(direct|inherit)]
+                          set branch tracking configuration
+    -f, --[no-]force      force checkout (throw away local modifications)
+    --[no-]orphan <new-branch>
+                          new unborn branch
+    --[no-]overwrite-ignore
+                          update ignored files (default)
+    --[no-]ignore-other-worktrees
+                          do not check if another worktree is using this branch
+    -2, --ours            checkout our version for unmerged files
+    -3, --theirs          checkout their version for unmerged files
+    -p, --[no-]patch      select hunks interactively
+    --[no-]ignore-skip-worktree-bits
+                          do not limit pathspecs to sparse entries only
+    --[no-]pathspec-from-file <file>
+                          read pathspec from file
+    --[no-]pathspec-file-nul
+                          with --pathspec-from-file, pathspec elements are separated with NUL character
+
+PS C:\Users\ROHIT\Documents\GitTraning> git checkout 66baf87d66e18ae3984636d78545a655033bd376:Index.html -- *
+fatal: unable to read tree (16a7a5e5b51e88cc5ee0c44624cd19fe5dc48df0)
+PS C:\Users\ROHIT\Documents\GitTraning> git checkout 66baf87d66e18ae3984636d78545a655033bd376 -- *           
+PS C:\Users\ROHIT\Documents\GitTraning> git checkout master -- *                                  
+PS C:\Users\ROHIT\Documents\GitTraning> git status                                                           
+On branch master
+nothing to commit, working tree clean
+PS C:\Users\ROHIT\Documents\GitTraning> git restore 
+fatal: you must specify path(s) to restore
+PS C:\Users\ROHIT\Documents\GitTraning> git restore .
+PS C:\Users\ROHIT\Documents\GitTraning> git restore .
+PS C:\Users\ROHIT\Documents\GitTraning> git restore .
+PS C:\Users\ROHIT\Documents\GitTraning> git add .\Index.html
+PS C:\Users\ROHIT\Documents\GitTraning> git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   Index.html
+
+PS C:\Users\ROHIT\Documents\GitTraning> git diff --cache
+error: invalid option: --cache
+usage: git diff [<options>] [<commit>] [--] [<path>...]
+   or: git diff [<options>] --cached [--merge-base] [<commit>] [--] [<path>...]
+   or: git diff [<options>] [--merge-base] <commit> [<commit>...] <commit> [--] [<path>...]
+   or: git diff [<options>] <commit>...<commit> [--] [<path>...]
+   or: git diff [<options>] <blob> <blob>
+   or: git diff [<options>] --no-index [--] <path> <path>
+
+common diff options:
+  -z            output diff-raw with lines terminated with NUL.
+  -p            output patch format.
+  -u            synonym for -p.
+  --patch-with-raw
+                output both a patch and the diff-raw format.
+  --stat        show diffstat instead of patch.
+  --numstat     show numeric diffstat instead of patch.
+  --patch-with-stat
+                output a patch and prepend its diffstat.
+PS C:\Users\ROHIT\Documents\GitTraning> 
+PS C:\Users\ROHIT\Documents\GitTraning> git diff --cached
+diff --git a/Index.html b/Index.html
+index 12872ad..a9d6c35 100644
+--- a/Index.html
++++ b/Index.html
+@@ -6,4 +6,5 @@
+ <body>
+ <h1>Hello World! 3nd commit</h1>
+ </body>
+-</html>
+\ No newline at end of file
++</html>
++vdsdvdsvdscsdvsdvc
+\ No newline at end of file
+PS C:\Users\ROHIT\Documents\GitTraning> git restore --staged .
+PS C:\Users\ROHIT\Documents\GitTraning> git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Users\ROHIT\Documents\GitTraning> git restore .         
+PS C:\Users\ROHIT\Documents\GitTraning> git status
+On branch master
+nothing to commit, working tree clean
+PS C:\Users\ROHIT\Documents\GitTraning> git add .\Index.html  
+PS C:\Users\ROHIT\Documents\GitTraning> git status   
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   Index.html
+
+PS C:\Users\ROHIT\Documents\GitTraning> git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   Index.html
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Index.html
+
+PS C:\Users\ROHIT\Documents\GitTraning> git restore --worktree .
+PS C:\Users\ROHIT\Documents\GitTraning> git commit -m "4th commit"
+[master 1deec95] 4th commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+PS C:\Users\ROHIT\Documents\GitTraning> git status
+On branch master
+nothing to commit, working tree clean
+PS C:\Users\ROHIT\Documents\GitTraning> git add .\Index.html      
+PS C:\Users\ROHIT\Documents\GitTraning> git commit -m "wrong commit test"
+[master a2e101b] wrong commit test
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+PS C:\Users\ROHIT\Documents\GitTraning> git log
+commit a2e101b1dc11abe4d9b1173b9ba2f00feb90e9d3 (HEAD -> master)
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:41:47 2025 +0530
+
+    wrong commit test
+
+commit 1deec950139e10710ba671d9b6c296b26afc8a52
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:40:21 2025 +0530
+
+    4th commit
+
+commit 5413a39ed9802953f82d2e5f08b32bda6e0edb7d
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:25:41 2025 +0530
+
+    Third commit index.html
+
+PS C:\Users\ROHIT\Documents\GitTraning> 
+PS C:\Users\ROHIT\Documents\GitTraning> git reset --hard HEAD^
+HEAD is now at 1deec95 4th commit
+PS C:\Users\ROHIT\Documents\GitTraning> git log
+commit 1deec950139e10710ba671d9b6c296b26afc8a52 (HEAD -> master)
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:40:21 2025 +0530
+
+    4th commit
+commit 1deec950139e10710ba671d9b6c296b26afc8a52 (HEAD -> master)
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:40:21 2025 +0530
+
+    4th commit
+
+commit 5413a39ed9802953f82d2e5f08b32bda6e0edb7d
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:25:41 2025 +0530
+
+    Third commit index.html
+
+commit 8724aeb50d463cff3514042b7db1d42db82cf26c
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:23:42 2025 +0530
+
+    Second commit index.html
+
+PS C:\Users\ROHIT\Documents\GitTraning>
+PS C:\Users\ROHIT\Documents\GitTraning> git log --p -1
+fatal: unrecognized argument: --p
+PS C:\Users\ROHIT\Documents\GitTraning> git log -p -1 
+commit 1deec950139e10710ba671d9b6c296b26afc8a52 (HEAD -> master)
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:40:21 2025 +0530
+
+    4th commit
+
+diff --git a/Index.html b/Index.html
+index 12872ad..dfe3329 100644
+--- a/Index.html
++++ b/Index.html
+@@ -4,6 +4,6 @@
+ <title>Hello World Page</title>
+ </head>
+ <body>
+-<h1>Hello World! 3nd commit</h1>
++<h1>Hello World! 4nd commit</h1>
+ </body>
+ </html>
+\ No newline at end of file
+PS C:\Users\ROHIT\Documents\GitTraning> git log -p -2
+commit 1deec950139e10710ba671d9b6c296b26afc8a52 (HEAD -> master)
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:40:21 2025 +0530
+
+    4th commit
+
+diff --git a/Index.html b/Index.html
+index 12872ad..dfe3329 100644
+--- a/Index.html
++++ b/Index.html
+@@ -4,6 +4,6 @@
+ <title>Hello World Page</title>
+ </head>
+ <body>
+-<h1>Hello World! 3nd commit</h1>
++<h1>Hello World! 4nd commit</h1>
+ </body>
+ </html>
+\ No newline at end of file
+
+commit 5413a39ed9802953f82d2e5f08b32bda6e0edb7d
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:25:41 2025 +0530
+
+PS C:\Users\ROHIT\Documents\GitTraning> 
+PS C:\Users\ROHIT\Documents\GitTraning> git log --state
+fatal: unrecognized argument: --state
+PS C:\Users\ROHIT\Documents\GitTraning> git log -state 
+fatal: unrecognized argument: -state
+PS C:\Users\ROHIT\Documents\GitTraning> git log -stat 
+error: did you mean `--stat` (with two dashes)?
+PS C:\Users\ROHIT\Documents\GitTraning> git log --stat
+commit 1deec950139e10710ba671d9b6c296b26afc8a52 (HEAD -> master)
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:40:21 2025 +0530
+
+    4th commit
+
+ Index.html | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 5413a39ed9802953f82d2e5f08b32bda6e0edb7d
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:25:41 2025 +0530
+
+    Third commit index.html
+
+ Index.html | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 8724aeb50d463cff3514042b7db1d42db82cf26c
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:23:42 2025 +0530
+
+    Second commit index.html
+
+PS C:\Users\ROHIT\Documents\GitTraning> 
+PS C:\Users\ROHIT\Documents\GitTraning> git log --pretty=online
+fatal: invalid --pretty format: online
+PS C:\Users\ROHIT\Documents\GitTraning> git log --pretty=oneine
+fatal: invalid --pretty format: oneine
+PS C:\Users\ROHIT\Documents\GitTraning> git log --pretty=oneline
+1deec950139e10710ba671d9b6c296b26afc8a52 (HEAD -> master) 4th commit
+5413a39ed9802953f82d2e5f08b32bda6e0edb7d Third commit index.html
+8724aeb50d463cff3514042b7db1d42db82cf26c Second commit index.html
+66baf87d66e18ae3984636d78545a655033bd376 First commit index.html
+PS C:\Users\ROHIT\Documents\GitTraning> git log --pretty=format:"%h- %an, %ar: %$"
+1deec95- Rohit Gupta, 8 minutes ago: %$
+5413a39- Rohit Gupta, 23 minutes ago: %$
+8724aeb- Rohit Gupta, 25 minutes ago: %$
+66baf87- Rohit Gupta, 32 minutes ago: %$
+PS C:\Users\ROHIT\Documents\GitTraning> git log --pretty=format:"%h- %an, %ar: %s"
+1deec95- Rohit Gupta, 9 minutes ago: 4th commit
+5413a39- Rohit Gupta, 23 minutes ago: Third commit index.html
+8724aeb- Rohit Gupta, 25 minutes ago: Second commit index.html
+66baf87- Rohit Gupta, 33 minutes ago: First commit index.html
+PS C:\Users\ROHIT\Documents\GitTraning> git show 1deec95 .\Index.html
+commit 1deec950139e10710ba671d9b6c296b26afc8a52 (HEAD -> master)
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:40:21 2025 +0530
+
+    4th commit
+
+diff --git a/Index.html b/Index.html
+index 12872ad..dfe3329 100644
+--- a/Index.html
++++ b/Index.html
+@@ -4,6 +4,6 @@
+ <title>Hello World Page</title>
+ </head>
+ <body>
+-<h1>Hello World! 3nd commit</h1>
++<h1>Hello World! 4nd commit</h1>
+ </body>
+ </html>
+\ No newline at end of file
+PS C:\Users\ROHIT\Documents\GitTraning> git log -s "h1"                           
+fatal: ambiguous argument 'h1': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+PS C:\Users\ROHIT\Documents\GitTraning> git log -S "h1"
+commit 66baf87d66e18ae3984636d78545a655033bd376
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:16:19 2025 +0530
+
+    First commit index.html
+PS C:\Users\ROHIT\Documents\GitTraning> git log -S "4n"
+commit 1deec950139e10710ba671d9b6c296b26afc8a52 (HEAD -> master)
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:40:21 2025 +0530
+
+    4th commit
+PS C:\Users\ROHIT\Documents\GitTraning> git log -S "3n"
+commit 1deec950139e10710ba671d9b6c296b26afc8a52 (HEAD -> master)
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:40:21 2025 +0530
+
+    4th commit
+
+commit 5413a39ed9802953f82d2e5f08b32bda6e0edb7d
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:25:41 2025 +0530
+
+    Third commit index.html
+PS C:\Users\ROHIT\Documents\GitTraning> git log --grep="version"
+PS C:\Users\ROHIT\Documents\GitTraning> git log --grep="Third"  
+commit 5413a39ed9802953f82d2e5f08b32bda6e0edb7d
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:25:41 2025 +0530
+
+    Third commit index.html
+PS C:\Users\ROHIT\Documents\GitTraning> git log --grep="4th"  
+commit 1deec950139e10710ba671d9b6c296b26afc8a52 (HEAD -> master)
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:40:21 2025 +0530
+
+    4th commit
+PS C:\Users\ROHIT\Documents\GitTraning> git log --aurther="Rohit"
+fatal: unrecognized argument: --aurther=Rohit
+PS C:\Users\ROHIT\Documents\GitTraning> git log --author="Rohit" 
+commit 1deec950139e10710ba671d9b6c296b26afc8a52 (HEAD -> master)
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:40:21 2025 +0530
+
+    4th commit
+
+commit 5413a39ed9802953f82d2e5f08b32bda6e0edb7d
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:25:41 2025 +0530
+
+    Third commit index.html
+
+commit 8724aeb50d463cff3514042b7db1d42db82cf26c
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:23:42 2025 +0530
+
+    Second commit index.html
+
+commit 66baf87d66e18ae3984636d78545a655033bd376
+Author: Rohit Gupta <Gupta.rohit@email.com>
+Date:   Thu Jan 2 23:16:19 2025 +0530
+
+    First commit index.html
